@@ -16,7 +16,6 @@ class CreatePetsTable extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name')->default('');
             $table->string('photo')->default('');
             $table->string('toy')->default('');
@@ -24,6 +23,8 @@ class CreatePetsTable extends Migration
             $table->string('play')->default('');
             $table->text('bio')->default('');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

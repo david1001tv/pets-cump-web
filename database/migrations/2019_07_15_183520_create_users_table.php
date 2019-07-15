@@ -15,10 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('city_id');
             $table->string('f_name')->default('');
             $table->string('l_name')->default('');
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
             $table->string('address')->default('');
             $table->text('bio')->default('');
             $table->string('phone')->default('');
@@ -27,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->boolean('is_confirmed')->default(false);
             $table->boolean('is_admin')->default(false);
             $table->timestamps();
+
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 

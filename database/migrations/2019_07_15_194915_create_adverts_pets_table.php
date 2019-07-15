@@ -16,10 +16,11 @@ class CreateAdvertsPetsTable extends Migration
         Schema::create('adverts_pets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('pet_id');
-            $table->foreign('pet_id')->references('id')->on('pets');
             $table->unsignedBigInteger('advert_id');
-            $table->foreign('advert_id')->references('id')->on('adverts');
             $table->timestamps();
+
+            $table->foreign('pet_id')->references('id')->on('pets');
+            $table->foreign('advert_id')->references('id')->on('adverts');
         });
     }
 

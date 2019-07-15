@@ -16,11 +16,12 @@ class CreateAdvertsTable extends Migration
         Schema::create('adverts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->decimal('cost')->default(0.0);
             $table->decimal('food_cost')->default(0.0);
-            $table->boolean('is_processed');
+            $table->boolean('is_processed')->default(false);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -16,10 +16,11 @@ class CreateAdvertsVolunteersTable extends Migration
         Schema::create('adverts_volunteers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('volunteer_id');
-            $table->foreign('volunteer_id')->references('id')->on('users');
             $table->unsignedBigInteger('advert_id');
-            $table->foreign('advert_id')->references('id')->on('adverts');
             $table->timestamps();
+
+            $table->foreign('volunteer_id')->references('id')->on('users');
+            $table->foreign('advert_id')->references('id')->on('adverts');
         });
     }
 
