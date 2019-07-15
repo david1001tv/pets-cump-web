@@ -41,7 +41,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function volunteer()
     {
-        return $this->hasMany(AdvertVolunteer::class);
+        return $this->belongsToMany(Advert::class, 'adverts_volunteers', 'user_id', 'advert_id');
     }
 
     public function setPasswordAttribute($value)
